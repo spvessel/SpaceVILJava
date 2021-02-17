@@ -9,10 +9,12 @@
 **/sandbox/wrapper
 **/spacevil/internal/Wrapper/*.h
 *.class
-*.jar
 *.iml
 *.exp
 *.exe
+**/.classpath
+**/.project
+spacevil.jar
 SpaceVIL.dll
 wrapper.dll
 glfwwrapper.h

@@ -1,3 +1,4 @@
+@ECHO OFF
 cd src/main/java/com/spvessel/spacevil/internal/Wrapper
 javac -h . ^
 GlfwWrapper.java ^
@@ -18,12 +19,14 @@ GLFWWindowRefreshCallback.java ^
 GLFWFramebufferSizeCallback.java ^
 GLFWWindowContentScaleCallback.java ^
 GLFWDropCallback.java
-copy com_spvessel_spacevil_internal_Wrapper_GlfwWrapper.h "../../../../../../native/common/glfwwrapper.h"
-copy com_spvessel_spacevil_internal_Wrapper_OpenGLWrapper.h "../../../../../../native/common/openglwrapper.h"
+1>NUL copy com_spvessel_spacevil_internal_Wrapper_GlfwWrapper.h "../../../../../../native/common/glfwwrapper.h"
+1>NUL copy com_spvessel_spacevil_internal_Wrapper_OpenGLWrapper.h "../../../../../../native/common/openglwrapper.h"
 cd ../../../../../../../..
 cd src/main/native/windows
 call build.bat
 cd ../../../../..
-copy .\src\main\native\windows\build\Release\wrapper.dll .\src\main\resources\native\windows\
+1>NUL copy .\src\main\native\windows\build\Release\wrapper.dll .\src\main\resources\native\windows\
 call ./gradlew build
-copy build\libs\spacevil.jar ..\sandbox\libs
+rmdir /s /q ..\sandbox\libs
+mkdir ..\sandbox\libs
+1>NUL copy build\libs\spacevil.jar ..\sandbox\libs

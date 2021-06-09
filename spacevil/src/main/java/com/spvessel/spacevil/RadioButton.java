@@ -304,17 +304,19 @@ public class RadioButton extends Prototype {
     public void initElements() {
         // events
         _indicator.getIndicatorMarker().eventToggle = null;
-        IMouseMethodState btn_click = (sender, args) -> {
-            if (_indicator.getIndicatorMarker().isToggled())
-                return;
-            _indicator.getIndicatorMarker().setToggled(!_indicator.getIndicatorMarker().isToggled());
-            if (_indicator.getIndicatorMarker().isToggled())
-                uncheckOthers(sender);
-        };
-        eventMouseClick.add(btn_click);
+        eventMouseClick.add((sender, args) -> tryToSelect(sender));
 
         // adding
         addItems(_indicator, _textObject);
+    }
+
+    private void tryToSelect(IItem sender) {
+        if (_indicator.getIndicatorMarker().isToggled()) {
+            return;
+        }
+        
+        _indicator.getIndicatorMarker().setToggled(!_indicator.getIndicatorMarker().isToggled());            
+        uncheckOthers(sender);
     }
 
     /**
@@ -326,8 +328,8 @@ public class RadioButton extends Prototype {
         return _indicator.getIndicatorMarker().isToggled();
     }
 
-    public void setChecked(boolean value) {
-        _indicator.getIndicatorMarker().setToggled(value);
+    public void setChecked() {
+        tryToSelect(this);
     }
 /**
      * Setting  checked or unchecked.

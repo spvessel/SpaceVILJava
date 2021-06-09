@@ -10,6 +10,7 @@ import com.spvessel.spacevil.Core.IBaseItem;
 import com.spvessel.spacevil.Core.IHLayout;
 import com.spvessel.spacevil.Core.MouseArgs;
 import com.spvessel.spacevil.Flags.SizePolicy;
+import com.spvessel.spacevil.Flags.MouseButton;
 
 class TabBar extends Prototype implements IHLayout {
 
@@ -72,18 +73,24 @@ class TabBar extends Prototype implements IHLayout {
     private void initTab(Tab tab) {
         tab.view.setItemName(tab.getItemName() + "_view");
         tab.eventMousePress.add((sender, args) -> {
-            onTop(tab);
-            unselectOthers(tab, args);
+            if (args.button.equals(MouseButton.ButtonLeft)) {
+                onTop(tab);
+                unselectOthers(tab, args);
+            }
         });
         tab.eventTabRemove.add(() -> {
             selectBestRightoverTab();
             // removeTab(tab);
         });
         tab.eventMouseDrop.add((sender, args) -> {
-            onTabDrop(tab, args);
+            if (args.button.equals(MouseButton.ButtonLeft)) {                
+                onTabDrop(tab, args);
+            }
         });
         tab.eventMouseDrag.add((sender, args) -> {
-            onTabDrag(tab, args);
+            if (args.button.equals(MouseButton.ButtonLeft)) {
+                onTabDrag(tab, args);
+            }
         });
     }
 

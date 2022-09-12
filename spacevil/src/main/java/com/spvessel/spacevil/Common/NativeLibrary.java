@@ -24,6 +24,7 @@ final class NativeLibrary {
         extract(glfw);
         extract(spwrapper);
 
+        load(glfw);
         load(spwrapper);
         isLoaded = true;
     }

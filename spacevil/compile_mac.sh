@@ -27,5 +27,4 @@ cd src/main/native/macos
 cd ../../../../
 pwd
 cp src/main/native/macos/build/libwrapper.dylib src/main/resources/native/macos
-./gradlew build
-cp build\libs\spacevil.jar ..\sandbox\libs
+./gradlew publishToMavenLocal

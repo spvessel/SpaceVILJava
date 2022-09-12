@@ -2,6 +2,8 @@ plugins {
     id 'application'
 }
 
+applicationDefaultJvmArgs = ['-XstartOnFirstThread']
+
 repositories {
     mavenLocal()
     mavenCentral()

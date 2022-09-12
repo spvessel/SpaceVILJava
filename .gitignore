@@ -20,3 +20,6 @@ wrapper.dll
 glfwwrapper.h
 openglwrapper.h
 spacevil/out
+.DS_Store
+libwrapper.dylib
+**/wrapper

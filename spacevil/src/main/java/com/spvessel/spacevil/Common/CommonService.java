@@ -21,7 +21,7 @@ public final class CommonService {
     private CommonService() {
     }
 
-    private static String _version = "0.3.1-ALPHA - January 2019";
+    private static String _version = "0.0.0-dev - Local Package";
 
     /**
      * Getting basic information about SpaceVIL such as version, date, platform and

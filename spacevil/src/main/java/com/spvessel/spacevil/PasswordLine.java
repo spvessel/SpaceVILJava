@@ -5,10 +5,10 @@ import com.spvessel.spacevil.Decorations.Indents;
 import com.spvessel.spacevil.Decorations.Style;
 import com.spvessel.spacevil.Flags.EmbeddedImage;
 import com.spvessel.spacevil.Flags.EmbeddedImageSize;
+import com.spvessel.spacevil.Flags.InputEventType;
 import com.spvessel.spacevil.Flags.ItemAlignment;
 
 import java.awt.*;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -265,6 +265,7 @@ public class PasswordLine extends HorizontalStack {
         eye.setColorOverlay(eyeBtnShadeColor);
         _showPwdBtn.addItem(eye);
 
+        _textEncrypt.setPassEvents(false);
         _showPwdBtn.setPassEvents(false);
         _showPwdBtn.eventMousePress.add((sender, args) -> {
             showPassword(true);
@@ -278,6 +279,109 @@ public class PasswordLine extends HorizontalStack {
             showPassword(false);
             eye.setColorOverlay(eyeBtnShadeColor);
         });
+    }
+
+    /**
+     * Getting boolean value to know if this item can pass further any input events
+     * (mouse, keyboard and etc.).
+     * <p>
+     * Tip: Need for filtering input events.
+     * 
+     * @return True: if this item pass on any input events. False: If this item do
+     *         not pass any input events.
+     */
+    public boolean isPassEvents() {
+        return _textEncrypt.isPassEvents();
+    }
+
+    /**
+     * Getting boolean value to know if this item can pass further the specified
+     * type of input events (mouse, keyboard and etc.).
+     * 
+     * @param e Type of input events as com.spvessel.spacevil.Flags.InputEventType.
+     * @return True: if this item pass on the specified type of input events. False:
+     *         If this item do not pass the specified type of input events.
+     */
+    public boolean isPassEvents(InputEventType e) {
+        if (_textEncrypt.getBlockedEvents().contains(e))
+            return false;
+        return true;
+    }
+
+    /**
+     * Getting all allowed input events.
+     * 
+     * @return Allowed input events as
+     *         List&lt;com.spvessel.spacevil.Flags.InputEventType&gt;
+     */
+    public List<InputEventType> getPassEvents() {
+        return _textEncrypt.getPassEvents();
+    }
+
+    /**
+     * Getting all blocked input events.
+     * 
+     * @return Blocked input events as
+     *         List&lt;com.spvessel.spacevil.Flags.InputEventType&gt;
+     */
+    public List<InputEventType> getBlockedEvents() {
+        return _textEncrypt.getBlockedEvents();
+    }
+
+    /**
+     * Setting on or off so that this item can pass further any input events (mouse,
+     * keyboard and etc.).
+     * 
+     * @param value True: if you want that this item may to pass on any input
+     *              events. False: if you want that this item cannot to pass on any
+     *              input events.
+     */
+    public void setPassEvents(boolean value) {
+        _textEncrypt.setPassEvents(value);
+    }
+
+    /**
+     * Setting on or off so that this item can pass further the specified type of
+     * input events (mouse, keyboard and etc.).
+     * 
+     * @param value True: if you want this item can pass further the specified type
+     *              of input events. False: if you want this item connot pass
+     *              further the specified type of input events.
+     * @param e     Type of input events as
+     *              com.spvessel.spacevil.Flags.InputEventType.
+     */
+    public void setPassEvents(boolean value, InputEventType e) {
+        _textEncrypt.setPassEvents(value, e);
+    }
+
+    /**
+     * Setting on or off so that this item can pass further the specified types of
+     * input events (mouse, keyboard and etc.).
+     * 
+     * @param value  True: if you want this item can pass further the specified
+     *               types of input events. False: if you want this item connot pass
+     *               further the specified types of input events.
+     * @param events List of input event types as
+     *               com.spvessel.spacevil.Flags.InputEventType.
+     */
+    public void setPassEvents(boolean value, List<InputEventType> events) {
+        _textEncrypt.setPassEvents(value, events);
+    }
+
+    /**
+     * Setting on or off so that this item can pass further the specified types of
+     * input events (mouse, keyboard and etc.).
+     * 
+     * @param value  True: if you want this item can pass further the specified
+     *               types of input events. False: if you want this item connot pass
+     *               further the specified types of input events.
+     * @param events Sequence of input event types as
+     *               com.spvessel.spacevil.Flags.InputEventType.
+     */
+    public void setPassEvents(boolean value, InputEventType... events) {
+        for (InputEventType e : events) {
+            _textEncrypt.setPassEvents(value, e);
+        }
     }
 
     /**

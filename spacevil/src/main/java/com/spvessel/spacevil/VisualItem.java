@@ -506,11 +506,11 @@ final class VisualItem extends BaseItem {
         }
     }
 
-    void setPassEvents(boolean value, List<InputEventType> event_set) {
+    void setPassEvents(boolean value, List<InputEventType> events) {
         if (!value) {
-            _blockedEvents = event_set;
+            _blockedEvents = events;
         } else {
-            for (InputEventType e : event_set) {
+            for (InputEventType e : events) {
                 if (_blockedEvents.contains(e))
                     _blockedEvents.remove(e);
             }

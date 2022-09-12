@@ -40,7 +40,7 @@ class FontEngine {
             }
         }
         Alphabet a = fonts.get(font);
-        return a.fontDims; //new int[]{a.lineSpacer, a.alphMinY, a.alphHeight};
+        return a.fontDims;
     }
 
     static boolean savePreloadFont(Font font) {

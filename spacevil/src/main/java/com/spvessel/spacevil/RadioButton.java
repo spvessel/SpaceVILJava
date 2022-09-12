@@ -303,20 +303,17 @@ public class RadioButton extends Prototype {
     @Override
     public void initElements() {
         // events
-        _indicator.getIndicatorMarker().eventToggle = null;
-        eventMouseClick.add((sender, args) -> tryToSelect(sender));
+        _indicator.getIndicatorMarker().eventToggle.clear();
+        IMouseMethodState action = (sender, args) -> {
+            if (_indicator.getIndicatorMarker().isToggled()) {
+                return;
+            }
+            setChecked(!isChecked());
+        };
+        eventMouseClick.add(action);
 
         // adding
         addItems(_indicator, _textObject);
-    }
-
-    private void tryToSelect(IItem sender) {
-        if (_indicator.getIndicatorMarker().isToggled()) {
-            return;
-        }
-        
-        _indicator.getIndicatorMarker().setToggled(!_indicator.getIndicatorMarker().isToggled());            
-        uncheckOthers(sender);
     }
 
     /**
@@ -328,8 +325,12 @@ public class RadioButton extends Prototype {
         return _indicator.getIndicatorMarker().isToggled();
     }
 
-    public void setChecked() {
-        tryToSelect(this);
+    public void setChecked(boolean value) {
+        var isToggled = isChecked();
+        _indicator.getIndicatorMarker().setToggled(value);
+        if (value && !isToggled) {
+            uncheckOthers();
+        }
     }
 /**
      * Setting  checked or unchecked.
@@ -337,7 +338,7 @@ public class RadioButton extends Prototype {
      * @param value True: if you want  to be checked. False: if you want
      *               to be unchecked.
      */
-    private void uncheckOthers(IItem sender) {
+    private void uncheckOthers() {
         List<IBaseItem> items = getParent().getItems();
         for (IBaseItem item : items) {
             if (item instanceof RadioButton && !item.equals(this)) {

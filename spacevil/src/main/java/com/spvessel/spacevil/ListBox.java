@@ -473,10 +473,10 @@ public class ListBox extends Prototype {
         if (list.contains(item)) {
             return super.removeItem(item);
         }
-        boolean b = _area.removeItem(item);
+        boolean result = _area.removeItem(item);
         updateElements();
         _area.setFocus();
-        return b;
+        return result;
     }
 
     /**

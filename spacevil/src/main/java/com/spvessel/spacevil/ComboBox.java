@@ -376,6 +376,10 @@ public class ComboBox extends Prototype {
      */
     @Override
     public boolean removeItem(IBaseItem item) {
+        List<IBaseItem> list = getItems();
+        if (list.contains(item)) {
+            return super.removeItem(item);
+        }
         return dropDownArea.removeItem(item);
     }
 

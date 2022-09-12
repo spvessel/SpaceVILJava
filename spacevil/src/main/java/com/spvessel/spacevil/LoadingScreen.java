@@ -162,24 +162,26 @@ public class LoadingScreen extends Prototype {
         _handler = handler;
         _handler.addItem(this);
         _handler.setFocusedItem(this);
-        RedrawFrequency tmp = _handler.getRenderFrequency();
-        if (tmp != RedrawFrequency.High)
+        RedrawFrequency savedRenderFrequency = _handler.getRenderFrequency();
+        if (savedRenderFrequency != RedrawFrequency.High)
             _handler.setRenderFrequency(RedrawFrequency.High);
         Thread thread = new Thread(() -> {
-            int alpha = 360;
+            int alpha = 0;
             while (!isOnClose()) {
                 _loadIcon.setRotationAngle(alpha);
-                alpha--;
-                if (alpha == 0)
+                alpha++;
+                if (alpha == 0) {
                     alpha = 360;
+                }
                 try {
                     Thread.sleep(2);
                 } catch (Exception e) {
                 }
             }
-            Close();
-            if (tmp != RedrawFrequency.High)
-                _handler.setRenderFrequency(tmp);
+            close();
+            if (savedRenderFrequency != RedrawFrequency.High) {
+                _handler.setRenderFrequency(savedRenderFrequency);
+            }
         });
         thread.start();
     }
@@ -187,7 +189,7 @@ public class LoadingScreen extends Prototype {
     /**
      * Closes LoadingScreen.
      */
-    private void Close() {
+    private void close() {
         _handler.removeItem(this);
     }
 

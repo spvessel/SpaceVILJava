@@ -113,6 +113,7 @@ public class SideArea extends Prototype implements IFloating {
                 window.setWidthPolicy(SizePolicy.Fixed);
                 window.setWidth(_size);
                 window.excludeSides(Side.Right, Side.Bottom, Side.Top);
+                window.setAlignment(ItemAlignment.Right);
                 window.effects().add(_shadowRightArea);
                 break;
 

@@ -26,7 +26,4 @@ cd src/main/native/windows
 call build.bat
 cd ../../../../..
 1>NUL copy .\src\main\native\windows\build\Release\wrapper.dll .\src\main\resources\native\windows\
-call ./gradlew build
-rmdir /s /q ..\sandbox\libs
-mkdir ..\sandbox\libs
-1>NUL copy build\libs\spacevil.jar ..\sandbox\libs
+call ./gradlew publishToMavenLocal

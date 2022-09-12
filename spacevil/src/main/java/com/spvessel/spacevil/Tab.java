@@ -16,7 +16,6 @@ import com.spvessel.spacevil.Flags.InputEventType;
 import com.spvessel.spacevil.Flags.ItemAlignment;
 import com.spvessel.spacevil.Flags.ItemStateType;
 import com.spvessel.spacevil.Flags.SizePolicy;
-import com.spvessel.spacevil.Flags.MouseButton;
 
 /**
  * Tab is used in com.spvessel.spacevil.TabView. Represents tab of one page.
@@ -136,36 +135,29 @@ public class Tab extends Prototype implements IDraggable {
         if (!isDraggable()) {
             return;
         }
-
-        if (args.button.equals(MouseButton.ButtonLeft)) {
-            _xClick = args.position.getX();
-            _xDiff = args.position.getX() - getX();
-        }
+        _xClick = args.position.getX();
+        _xDiff = args.position.getX() - getX();
     }
 
     private void onDragging(IItem sender, MouseArgs args) {
         if (!isDraggable()) {
             return;
         }
-
-        if (args.button.equals(MouseButton.ButtonLeft)) {
-            if (dragging) {
-                Prototype parent = getParent();
-                int offset = args.position.getX() - parent.getX() - _xDiff;
-                int x = offset + parent.getX();
-                if (x <= parent.getX()) {
-                    x = parent.getX();
-                }
-                if (x >= parent.getX() + parent.getWidth() - getWidth()) {
-                    x = parent.getX() + parent.getWidth() - getWidth();
-                }
-                setX(x);
-            } else {
-                if (Math.abs(_xClick - args.position.getX()) <= 20) {
-                    return;
-                }
-                dragging = true;
+        if (dragging) {
+            Prototype parent = getParent();
+            int offset = args.position.getX() - parent.getX() - _xDiff;
+            int x = offset + parent.getX();
+            if (x <= parent.getX()) {
+                x = parent.getX();
             }
+            if (x >= parent.getX() + parent.getWidth() - getWidth()) {
+                x = parent.getX() + parent.getWidth() - getWidth();
+            }
+            setX(x);
+        } else {
+            if (Math.abs(_xClick - args.position.getX()) <= 20)
+                return;
+            dragging = true;
         }
     }
 

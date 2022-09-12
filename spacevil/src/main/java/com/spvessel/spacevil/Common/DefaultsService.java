@@ -22,12 +22,10 @@ import javax.imageio.ImageIO;
  * common values such as font, mouse cursor, icon images.
  */
 public final class DefaultsService {
-    private DefaultsService() {
-        // _default_font = DefaultFont.getInstance();
-    }
+    private DefaultsService() {}
 
     static void initDefaultTheme() {
-        _default_theme = new ThemeStyle();
+        _defaultTheme = new ThemeStyle();
     }
 
     private static Map<EmbeddedImage, BufferedImage> images_32 = new HashMap<>();
@@ -36,9 +34,9 @@ public final class DefaultsService {
 
     private static CursorImage _defaultCursor = new CursorImage(EmbeddedCursor.Arrow);
 
-    private static ThemeStyle _default_theme; // = ThemeStyle.GetInstance();
+    private static ThemeStyle _defaultTheme;
 
-    private static DefaultFont _default_font = DefaultFont.getInstance();;
+    private static DefaultFont _defaultFont = DefaultFont.getInstance();;
 
     /**
      * Setting default cursor image the current application.
@@ -68,10 +66,10 @@ public final class DefaultsService {
      *         com.spvessel.spacevil.Decorations.ThemeStyle
      */
     public static ThemeStyle getDefaultTheme() {
-        if (_default_theme == null) {
-            _default_theme = new ThemeStyle();
+        if (_defaultTheme == null) {
+            _defaultTheme = new ThemeStyle();
         }
-        return _default_theme;
+        return _defaultTheme;
     }
 
     /**
@@ -80,7 +78,7 @@ public final class DefaultsService {
      * @param theme The theme as com.spvessel.spacevil.Decorations.ThemeStyle
      */
     public static void setDefaultTheme(final ThemeStyle theme) {
-        _default_theme = theme;
+        _defaultTheme = theme;
     }
 
     /**
@@ -92,10 +90,10 @@ public final class DefaultsService {
      * @return Style as com.spvessel.spacevil.Decorations.Style.
      */
     public static Style getDefaultStyle(final Class<?> type) {
-        if (_default_theme == null) {
-            _default_theme = new ThemeStyle();
+        if (_defaultTheme == null) {
+            _defaultTheme = new ThemeStyle();
         }
-        return _default_theme.getThemeStyle(type);
+        return _defaultTheme.getThemeStyle(type);
     }
 
     /**
@@ -104,7 +102,7 @@ public final class DefaultsService {
      * @return The current default font as java.awt.Font
      */
     public static Font getDefaultFont() {
-        return _default_font.getDefaultFont();
+        return _defaultFont.getDefaultFont();
     }
 
     /**
@@ -115,7 +113,7 @@ public final class DefaultsService {
      * @return The current default font with changed font size as java.awt.Font
      */
     public static Font getDefaultFont(final int size) {
-        return _default_font.getDefaultFont(size);
+        return _defaultFont.getDefaultFont(size);
     }
 
     /**
@@ -128,7 +126,7 @@ public final class DefaultsService {
      *         java.awt.Font
      */
     public static Font getDefaultFont(final int style, final int size) {
-        return _default_font.getDefaultFont(style, size);
+        return _defaultFont.getDefaultFont(style, size);
     }
 
     /**
@@ -137,7 +135,7 @@ public final class DefaultsService {
      * @param font A font as java.awt.Font
      */
     public static void setDefaultFont(final Font font) {
-        _default_font.setDefaultFont(font);
+        _defaultFont.setDefaultFont(font);
     }
 
     static void initImages() {

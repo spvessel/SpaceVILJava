@@ -306,7 +306,7 @@ public class ListArea extends Prototype implements IVLayout {
         boolean restore = false;
         SelectionItem currentSelection = null;
 
-        boolean b;
+        boolean result;
         if (item instanceof SelectionItem) {
             SelectionItem tmp = (SelectionItem) item;
             if (getTrueSelection() != null) {
@@ -316,7 +316,7 @@ public class ListArea extends Prototype implements IVLayout {
             unselect();
             _mapContent.remove(tmp.getContent());
             tmp.clearContent();
-            b = super.removeItem(tmp);
+            result = super.removeItem(tmp);
         } else {
             SelectionItem tmp = _mapContent.get(item);
             if (getTrueSelection() != null) {
@@ -326,7 +326,7 @@ public class ListArea extends Prototype implements IVLayout {
             unselect();
             _mapContent.remove(item);
             tmp.clearContent();
-            b = super.removeItem(tmp);
+            result = super.removeItem(tmp);
         }
         updateLayout();
 
@@ -334,7 +334,7 @@ public class ListArea extends Prototype implements IVLayout {
             setSelection(getItems().indexOf(currentSelection));
 
         itemListChanged.execute();
-        return b;
+        return result;
     }
 
     /**

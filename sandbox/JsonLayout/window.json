@@ -1,6 +1,6 @@
 {
-  "WindowName": "JsonTest",
-  "WindowTitle": "JsonTest",
+  "WindowName": "JsonView",
+  "WindowTitle": "JsonView",
   "Size": [
     800,
     800
@@ -31,7 +31,7 @@
       "bottom": 2
     },
     "Label": {
-      "Text": "0 lines  0 characters",
+      "Text": "JSON Layout",
       "Height": 25,
       "HeightPolicy": "Fixed",
       "Background": [

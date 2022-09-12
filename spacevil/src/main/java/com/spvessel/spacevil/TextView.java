@@ -236,11 +236,11 @@ public class TextView extends Prototype implements IDraggable, ITextShortcuts, I
         setText(text.toString());
     }
 
-    int getTextWidth() {
+    public int getTextWidth() {
         return _textureStorage.getWidth();
     }
 
-    int getTextHeight() {
+    public int getTextHeight() {
         return _textureStorage.getTextHeight();
     }
 

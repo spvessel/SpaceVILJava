@@ -1014,7 +1014,7 @@ public class Style implements Cloneable {
         style.alignment = new LinkedList<>(Arrays.asList(ItemAlignment.Left, ItemAlignment.Top));
         style.textAlignment = new LinkedList<>(Arrays.asList(ItemAlignment.Left, ItemAlignment.VCenter));
         style.padding = new Indents(10, 0, 10, 0);
-        style.addItemState(ItemStateType.Hovered, new ItemState(new Color(200, 200, 200)));
+        style.addItemState(ItemStateType.Hovered, new ItemState(new Color(255, 255, 255, 30)));
 
         Style textStyle = new Style();
         textStyle.setMargin(0, 0, 0, 0);

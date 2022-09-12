@@ -6,8 +6,11 @@ project(glfwapi)
 # specify the C++ standard
 
 # add the include dirs
-include_directories("C:\\Program Files\\AdoptOpenJDK\\jdk-11.0.9.11-hotspot\\include")
-include_directories("C:\\Program Files\\AdoptOpenJDK\\jdk-11.0.9.11-hotspot\\include\\win32")
+find_package(JNI)
+if (JNI_FOUND)
+    include_directories(SYSTEM ${JAVA_INCLUDE_PATH})
+    include_directories(SYSTEM ${JAVA_INCLUDE_PATH2})
+endif()
 include_directories("${PROJECT_SOURCE_DIR}/../common")
 include_directories("${PROJECT_SOURCE_DIR}/../common/GLFW")
 include_directories("${PROJECT_SOURCE_DIR}/../common/KHR")

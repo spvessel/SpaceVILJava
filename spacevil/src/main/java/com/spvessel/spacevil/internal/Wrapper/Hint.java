@@ -38,7 +38,7 @@ public final class Hint {
     public static final int ContextReleaseBehavior = 0x00022009;
     public static final int ContextNoError = 0x0002200a;
     public static final int ContextCreationApi = 0x0002200b;
-    public static final int TranspatentFramebuffer = 131082;
+    public static final int TransparentFramebuffer = 131082;
     public static final int CocoaRetinaFramebuffer = 143361;
     public static final int ScaleToMonitor = 139276;
 }

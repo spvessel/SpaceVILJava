@@ -9,8 +9,6 @@ import com.spvessel.spacevil.Flags.OSType;
 
 import com.spvessel.spacevil.internal.Wrapper.*;
 
-import java.nio.FloatBuffer;
-
 final class GLWHandler {
 
     private GlfwWrapper glfw = null;
@@ -84,37 +82,11 @@ final class GLWHandler {
 
         // scaling window's content (does not affect on Mac OS)
         glfw.WindowHint(Hint.ScaleToMonitor, 1);
-
-        if (resizeble)
-            glfw.WindowHint(Hint.Resizable, 1);
-        else
-            glfw.WindowHint(Hint.Resizable, 0);
-
-        if (!borderHidden)
-            glfw.WindowHint(Hint.Decorated, 1);
-        else
-            glfw.WindowHint(Hint.Decorated, 0);
-
-        if (focused)
-            glfw.WindowHint(Hint.Focused, 1);
-        else
-            glfw.WindowHint(Hint.Focused, 0);
-
-        if (alwaysOnTop)
-            glfw.WindowHint(Hint.Floating, 1);
-        else
-            glfw.WindowHint(Hint.Floating, 0);
-
-        // if (maximized)
-        // glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
-        // else
-        // glfwWindowHint(GLFW_MAXIMIZED, GLFW_FALSE);
-
-        if (transparent)
-            glfw.WindowHint(Hint.TranspatentFramebuffer, 1);
-        else
-        glfw.WindowHint(Hint.TranspatentFramebuffer, 0);
-
+        glfw.WindowHint(Hint.Resizable, resizeble ? 1 : 0);
+        glfw.WindowHint(Hint.Decorated, borderHidden ? 0 : 1);
+        glfw.WindowHint(Hint.Focused, focused ? 1 : 0);
+        glfw.WindowHint(Hint.Floating, alwaysOnTop ? 1 : 0);
+        glfw.WindowHint(Hint.TransparentFramebuffer, transparent ? 1 : 0);
         glfw.WindowHint(Hint.Visible, 0);
 
         _window = glfw.CreateWindow(_coreWindow.getWidth(), _coreWindow.getHeight(), _coreWindow.getWindowTitle(), 0, 0);
@@ -127,8 +99,6 @@ final class GLWHandler {
 
         float[] scale = glfw.GetWindowContentScale(_window);
         _coreWindow.setWindowScale(scale[0], scale[1]);
-
-        // System.out.println(_coreWindow.getDpiScale().toString());
 
         int actualWndWidth = _coreWindow.getWidth();
         int actualWndHeight = _coreWindow.getHeight();
@@ -146,7 +116,6 @@ final class GLWHandler {
             getPointer().setY(workArea.getY() + (workArea.getHeight() - actualWndHeight) / 2);
 
         } else {
-
             if (CommonService.getOSType() != OSType.Mac) {
                 xActualScale = _coreWindow.getDpiScale().getXScale();
                 yActualScale = _coreWindow.getDpiScale().getYScale();
@@ -158,14 +127,16 @@ final class GLWHandler {
             getPointer().setX(_coreWindow.getX() + workArea.getX());
             getPointer().setY(_coreWindow.getY() + workArea.getY());
         }
+
         glfw.SetWindowPos(_window, getPointer().getX(), getPointer().getY());
 
         glfw.SetWindowSizeLimits(_window, (int) (_coreWindow.getMinWidth() * xActualScale),
                 (int) (_coreWindow.getMinHeight() * yActualScale), (int) (_coreWindow.getMaxWidth() * xActualScale),
                 (int) (_coreWindow.getMaxHeight() * yActualScale));
 
-        if (_coreWindow.isKeepAspectRatio)
+        if (_coreWindow.isKeepAspectRatio) {
             glfw.SetWindowAspectRatio(_window, _coreWindow.ratioW, _coreWindow.ratioH);
+        }
 
         if (visible) {
             glfw.ShowWindow(_window);

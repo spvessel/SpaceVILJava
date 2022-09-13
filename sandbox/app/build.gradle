@@ -2,7 +2,8 @@ plugins {
     id 'application'
 }
 
-applicationDefaultJvmArgs = ['-XstartOnFirstThread']
+// TODO: add condition on that
+// applicationDefaultJvmArgs = ['-XstartOnFirstThread']
 
 repositories {
     mavenLocal()

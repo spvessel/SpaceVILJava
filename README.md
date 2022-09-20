@@ -26,14 +26,14 @@ Steps:
 ```
 # Windows OS:
 
-> cd SpaceVIL
+> cd spacevil
 > compile-win.bat
 ```
 
 ```
 # Mac OS:
 
-> cd SpaceVIL
+> cd spacevil
 > compile-mac.sh
 ```
 
@@ -41,7 +41,7 @@ Steps:
 ```
 # Linux OS:
 
-> cd SpaceVIL
+> cd spacevil
 > compile-lin.sh
 ```
 

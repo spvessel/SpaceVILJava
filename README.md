@@ -80,9 +80,9 @@ Steps:
 
 ### Authors
 * **Roman Sedaikin**
-* **Valeriia Sedaikina**
+* **Valery Sedaikina**
 
 
 ### License
 
-Examples is licensed under the MIT License. See the LICENSE.md file for details.
+SpaceVIL is licensed under the MIT License. See the LICENSE file for details.

@@ -181,7 +181,7 @@ public class OpenEntryDialog extends OpenDialog {
         ImageItem user = new ImageItem(
                 DefaultsService.getDefaultImage(EmbeddedImage.User, EmbeddedImageSize.Size64x64), false);
         ImageItem create = new ImageItem(
-                DefaultsService.getDefaultImage(EmbeddedImage.ForderPlus, EmbeddedImageSize.Size64x64), false);
+                DefaultsService.getDefaultImage(EmbeddedImage.ForlerPlus, EmbeddedImageSize.Size64x64), false);
         ImageItem rename = new ImageItem(
                 DefaultsService.getDefaultImage(EmbeddedImage.Pencil, EmbeddedImageSize.Size64x64), false);
         ImageItem refresh = new ImageItem(

@@ -151,7 +151,7 @@ public final class DefaultsService {
         stream = DefaultFont.class.getResourceAsStream("/images/folder32.png");
         addImage(stream, images_32, EmbeddedImage.Folder);
         stream = DefaultFont.class.getResourceAsStream("/images/folderplus32.png");
-        addImage(stream, images_32, EmbeddedImage.ForlerPlus);
+        addImage(stream, images_32, EmbeddedImage.FolderPlus);
         stream = DefaultFont.class.getResourceAsStream("/images/gear32.png");
         addImage(stream, images_32, EmbeddedImage.Gear);
         stream = DefaultFont.class.getResourceAsStream("/images/import32.png");
@@ -195,7 +195,7 @@ public final class DefaultsService {
         stream = DefaultFont.class.getResourceAsStream("/images/folder64.png");
         addImage(stream, images_64, EmbeddedImage.Folder);
         stream = DefaultFont.class.getResourceAsStream("/images/folderplus64.png");
-        addImage(stream, images_64, EmbeddedImage.ForlerPlus);
+        addImage(stream, images_64, EmbeddedImage.FolderPlus);
         stream = DefaultFont.class.getResourceAsStream("/images/gear64.png");
         addImage(stream, images_64, EmbeddedImage.Gear);
         stream = DefaultFont.class.getResourceAsStream("/images/import64.png");

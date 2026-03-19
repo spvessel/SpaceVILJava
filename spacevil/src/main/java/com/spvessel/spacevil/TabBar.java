@@ -78,8 +78,10 @@ class TabBar extends Prototype implements IHLayout {
             }
         });
         tab.eventTabRemove.add(() -> {
+            if (_selectedTab != tab) {
+                selectTab(tab);
+            }
             selectBestRightoverTab();
-            // removeTab(tab);
         });
         tab.eventMouseDrop.add((sender, args) -> {
             if (args.button.equals(MouseButton.ButtonLeft)) {                

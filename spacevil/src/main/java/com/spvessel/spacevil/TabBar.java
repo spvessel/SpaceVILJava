@@ -78,6 +78,9 @@ class TabBar extends Prototype implements IHLayout {
             }
         });
         tab.eventTabRemove.add(() -> {
+            if (_selectedTab != tab) {
+                selectTab(tab);
+            }
             selectBestRightoverTab();
             // removeTab(tab);
         });
